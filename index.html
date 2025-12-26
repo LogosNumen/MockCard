@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ribr 🎉</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(270deg, #ff0080, #7928ca, #2afadf);
+        background-size: 600% 600%;
+        animation: bgMove 12s ease infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+        color: white;
+    }
+
+    @keyframes bgMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .card {
+        position: relative;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(12px);
+        border-radius: 25px;
+        padding: 40px;
+        text-align: center;
+        width: 420px;
+        box-shadow: 0 0 40px rgba(255,255,255,0.2);
+        animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+
+    h1 {
+        font-size: 2.6em;
+        margin-bottom: 10px;
+        animation: bounceIn 1.5s ease;
+        text-shadow: 0 0 10px #ff7aff, 0 0 20px #ff7aff;
+    }
+
+    @keyframes bounceIn {
+        0% { transform: scale(0); }
+        60% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    p {
+        font-size: 1.2em;
+        margin: 8px 0;
+        opacity: 0;
+        animation: fadeUp 1s ease forwards;
+    }
+
+    p:nth-child(2) { animation-delay: 0.5s; }
+    p:nth-child(3) { animation-delay: 1s; }
+    p:nth-child(4) { animation-delay: 1.5s; }
+    p:nth-child(5) { animation-delay: 2s; }
+
+    @keyframes fadeUp {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .from {
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 1.1em;
+        opacity: 0.9;
+    }
+
+    button {
+        margin-top: 25px;
+        padding: 15px 25px;
+        font-size: 1em;
+        border: none;
+        border-radius: 30px;
+        background: linear-gradient(45deg, #ff0080, #7928ca);
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(255,0,128,0.6);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.15);
+        box-shadow: 0 0 30px rgba(255,0,128,1);
+    }
+
+    /* CONFETTI */
+    .confetti {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        top: -20px;
+        animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+
+    /* PARTY MODE SHAKE */
+    .party {
+        animation: shake 0.4s infinite;
+    }
+
+    @keyframes shake {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(1deg); }
+        50% { transform: rotate(0deg); }
+        75% { transform: rotate(-1deg); }
+        100% { transform: rotate(0deg); }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+    <h1>🎂 Happy late birthday haha 🎂</h1>
+    <p>Congratulations!!</p>
+    <p>You are here, you did it and I am glad that you did!</p>
+    <p>Isnt it cool how these like come out slowly? Maybe I should
+    slow it down a little bit</p>
+    <p>I hope you like this card even tho its bit silly, dont forget 
+    to spam the button at then end!</p>
+    <div class="from">— From me Chris(I am so amazing I know)</div>
+    <button onclick="party()">Start The Party?</button>
+</div>
+
+<script>
+function party() {
+    const card = document.getElementById("card");
+    card.classList.add("party");
+
+    for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor =
+            "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+        confetti.style.animationDuration =
+            Math.random() * 2 + 2 + "s";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 4000);
+    }
+
+    setTimeout(() => {
+        card.classList.remove("party");
+    }, 3000);
+}
+</script>
+
+</body>
+</html>
